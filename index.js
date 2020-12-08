@@ -31,20 +31,20 @@ app.get('/usuario', function (req, res) {
   codigo: 200,
   mensaje: ''
  };
- if(usuario.usuario !== '' || usuario.nivel !== '' || usuario.pavos !== '' || usuario.region !== '') {
+ /* if(usuario.usuario !== '' || usuario.nivel !== '' || usuario.pavos !== '' || usuario.region !== '') {
   respuesta = {
    error: true,
    codigo: 501,
    mensaje: 'El usuario no ha sido creado'
   };
- } else {
+ } else { */
   respuesta = {
    error: false,
    codigo: 200,
    mensaje: 'respuesta del usuario',
    respuesta: usuario
-  };
- }
+  }/* ;
+ } */
  res.send(respuesta);
 });
 app.post('/usuario', function (req, res) {
