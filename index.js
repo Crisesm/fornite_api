@@ -6,12 +6,7 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-let usuario = {
- usuario:'',
- nivel: '',
- pavos: '',
- region: '',
-};
+let usuario = [];
 let respuesta = {
  error: false,
  codigo: 200,
@@ -55,20 +50,19 @@ app.post('/usuario', function (req, res) {
    mensaje: 'todos los campos son requeridos'
   };
  } else {
-  if(usuario.usuario !== '' || usuario.nivel !== '' || usuario.pavos !== '' || usuario.region !== '') {
+  if(/* usuario.usuario !== '' || usuario.nivel !== '' || usuario.pavos !== '' || usuario.region !== '' */false) {
    respuesta = {
     error: true,
     codigo: 503,
     mensaje: 'El usuario ya fue creado previamente'
    };
   } else {
-   usuario = {
-    usuario: req.body.usuario,
+   usuario.push(
+    {usuario: req.body.usuario,
     pavos: req.body.pavos,
     region: req.body.region,
-    nivel: req.body.nivel
-
-   };
+    nivel: req.body.nivel}
+   )
    respuesta = {
     error: false,
     codigo: 200,
